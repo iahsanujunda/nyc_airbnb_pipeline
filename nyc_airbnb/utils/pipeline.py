@@ -23,25 +23,6 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)-15s %(message)s")
 logger = logging.getLogger()
 
 
-class Debugger(BaseEstimator, TransformerMixin):
-    def fit(self, X: pd.DataFrame, y=None):
-        return self
-
-    def transform(self, X: pd.DataFrame):
-        print(np.argwhere(np.isnan(X)))
-        return X
-
-
-class PandasDebugger(BaseEstimator, TransformerMixin):
-    def fit(self, X: pd.DataFrame, y=None):
-        return self
-
-    def transform(self, X: pd.DataFrame):
-        print(X.isnull().any())
-        print(X.dtypes)
-        return X
-
-
 def get_inference_pipeline(rf_config, max_tfidf_features):
     # Let's handle the categorical features first
     # Ordinal categorical are categorical values for which the order is meaningful, for example
