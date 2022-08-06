@@ -1,9 +1,0 @@
-2022-08-06 15:32:21,893 INFO - Connecting to Aliyun
-Traceback (most recent call last):
-  File "nyc_airbnb/get_data.py", line 103, in <module>
-    LOCAL_FILE = runner.get_oss_data(args.bucket, args.object_path, temp_dir)
-  File "nyc_airbnb/get_data.py", line 43, in get_oss_data
-    os.environ['OSS_ACCESS_KEY_ID'],
-  File "/Users/ahsanujundai/opt/anaconda3/envs/mlflow-877b007e9f519968c46bc44f1c71c342702019bb/lib/python3.8/os.py", line 675, in __getitem__
-    raise KeyError(key) from None
-KeyError: 'OSS_ACCESS_KEY_ID'
