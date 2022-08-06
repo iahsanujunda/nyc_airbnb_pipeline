@@ -58,6 +58,6 @@ outputs/
 artifacts.pkl
 wandb/
 artifacts/
-*model_dir/
+*_dir/
 
 multirun/
