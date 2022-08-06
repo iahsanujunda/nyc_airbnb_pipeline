@@ -1,6 +1,8 @@
 import wandb
 import logging
+import mlflow
 import pandas as pd
+import tempfile
 
 logging.basicConfig(
     level=logging.INFO,
@@ -95,3 +97,19 @@ class BaseRunner:
 
         return data
 
+    def retrieve_model(self, model_artifact):
+        """Retrieve model artifact from wandb.
+
+        Args:
+            model_artifact: name for the artifact
+        Returns:
+            MLflow compatible model
+        """
+        logger.info("Downloading model")
+        # Download input artifact. This will also log that this script is using this
+        # particular version of the artifact
+        with tempfile.TemporaryDirectory() as temp_dir:
+            model_local_path = self.wandb_run.use_artifact(model_artifact) \
+                .download(f'{temp_dir}/')
+            model = mlflow.sklearn.load_model(model_local_path)
+            return model
