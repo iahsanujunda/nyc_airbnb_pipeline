@@ -1,0 +1,7 @@
+main:
+  project_name: nyc_airbnb
+  experiment_name: random_forest_model
+  steps: all
+data:
+  bucket: junda-mlops
+  object: dataset/training_data/

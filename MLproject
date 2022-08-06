@@ -1,0 +1,38 @@
+name: nyc_airbnb
+conda_env: conda.yml
+
+entry_points:
+  main:
+    parameters:
+      steps:
+        description: Comma-separated list of steps to execute (useful for debugging)
+        type: str
+        default: all
+      hydra_options:
+        description: Other configuration parameters to override
+        type: str
+        default: ''
+    command: "python main.py main.steps=\\'{steps}\\' $(echo {hydra_options})"
+  get_data:
+    parameters:
+      bucket:
+        description: OSS bucket where data is stored
+        type: string
+      object_path:
+        description: OSS object of dataset
+        type: string
+      artifact_name:
+        description: Name for the output artifact
+        type: string
+      artifact_type:
+        description: Type of the output artifact. This will be used to categorize the artifact in the W&B interface
+        type: string
+      artifact_description:
+        description: A brief description of the output artifact
+        type: string
+    command: "python nyc_airbnb/get_data.py
+        {bucket}
+        {object_path}
+        {artifact_name}
+        {artifact_type}
+        {artifact_description}"

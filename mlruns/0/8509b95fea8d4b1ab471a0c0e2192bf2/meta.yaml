@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/ahsanujundai/workspace/rental_prediction_pipeline/mlruns/0/8509b95fea8d4b1ab471a0c0e2192bf2/artifacts
+end_time: 1659774674953
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+name: ''
+run_id: 8509b95fea8d4b1ab471a0c0e2192bf2
+run_uuid: 8509b95fea8d4b1ab471a0c0e2192bf2
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1659774668210
+status: 4
+tags: []
+user_id: ahsanujundai

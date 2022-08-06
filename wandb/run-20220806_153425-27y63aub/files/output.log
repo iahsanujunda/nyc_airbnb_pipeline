@@ -1,0 +1,4 @@
+2022-08-06 15:34:29,090 INFO - Connecting to Aliyun
+2022-08-06 15:34:29,252 INFO - Downloading object from OSS
+2022-08-06 15:34:29,524 INFO - Exporting pandas dataframe to /var/folders/yv/n58q094d3wl4hp8c4yjwgc45vfmn2w/T/tmppndk_9oz/raw_training_data.parquet
+2022-08-06 15:34:32,297 INFO - Uploading raw_training_data.parquet to Weights & Biases
