@@ -95,3 +95,18 @@ entry_points:
         {rf_config}
         {max_tfidf_features}
         {output_artifact}"
+  evaluate:
+    parameters:
+      test_model:
+        description: An MLflow serialized model
+        type: string
+      test_dataset:
+        description: The test artifact
+        type: string
+      label:
+        description: Label of the prediction
+        type: string
+    command: "python nyc_airbnb/evaluate.py
+        {test_model}
+        {test_dataset}
+        {label}"

@@ -7,8 +7,11 @@ data:
   object: "dataset/training_data/"
   raw_data: "raw_training_data.parquet"
   training_data: "trainval_data.parquet"
+  test_data: "test_data.parquet"
   label: "price"
 modeling:
+  # Name of exported model to be used in testing model
+  test_model: "random_forest_model:latest"
   # Fraction of data to use for test (the remaining will be used for train and validation)
   test_size: 0.2
   # Fraction of remaining data to use for validation

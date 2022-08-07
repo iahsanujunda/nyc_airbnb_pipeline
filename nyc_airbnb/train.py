@@ -91,7 +91,7 @@ class TrainModelRunner(BaseRunner):
         self.log_model(
             model_artifact_name,
             "model_export",
-            "Pytorch lasso model export",
+            f"exported {model_artifact_name}",
             persist_dir)
 
 
@@ -162,7 +162,10 @@ if __name__ == "__main__":
         val_size=args.val_size
     )
     training_set = runner.retrieve_dataset_artifact(args.trainval_artifact)
-    r2, mae, TRAINED_MODEL = runner.train(training_set, rf_config, args.max_tfidf_features)
+    r2, mae, TRAINED_MODEL = runner.train(
+        data=training_set,
+        rf_config=rf_config,
+        max_tfidf_features=args.max_tfidf_features)
 
     # Logging to wandb
     logger.info(f'R2 score is {r2}')
@@ -175,6 +178,8 @@ if __name__ == "__main__":
 
     # Persist model
     logger.info('Exporting model')
-    runner.persist_model(TRAINED_MODEL, args.output_artifact)
+    runner.persist_model(
+        model=TRAINED_MODEL,
+        model_artifact_name=args.output_artifact)
 
     sys.exit(0)

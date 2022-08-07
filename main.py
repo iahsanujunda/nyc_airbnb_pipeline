@@ -11,7 +11,8 @@ load_dotenv()
 _steps = [
     'download',
     'split',
-    'train'
+    'train',
+    'evaluate'
 ]
 
 
@@ -71,7 +72,18 @@ def go(config: DictConfig):
                     "stratify_by": config["modeling"]["stratify_by"],
                     "rf_config": rf_config,
                     "max_tfidf_features": config["modeling"]["max_tfidf_features"],
-                    "output_artifact": "random_forest_export",
+                    "output_artifact": config["main"]["experiment_name"],
+                },
+            )
+
+        if "evaluate" in active_steps:
+            _ = mlflow.run(
+                os.path.join(hydra.utils.get_original_cwd()),
+                "evaluate",
+                parameters={
+                    "test_model": f'{config["modeling"]["test_model"]}',
+                    "test_dataset": f"{config['data']['test_data']}:latest",
+                    "label": config['data']['label'],
                 },
             )
 
